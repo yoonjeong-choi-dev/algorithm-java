@@ -146,15 +146,17 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         throw new UnsupportedOperationException();
     }
 
-    protected Collection<? extends java.util.Map.Entry<K, V>> getEntries() {
+    public Collection<? extends java.util.Map.Entry<K, V>> getEntries() {
         return entries;
     }
 
     @Override
     public String toString() {
-        return "MyLinearMap{" +
-                "entries=" + entries +
-                '}';
+        StringBuilder ret = new StringBuilder();
+        for (K key: keySet()) {
+            ret.append(key).append(" : ").append(get(key)).append("\n");
+        }
+        return ret.toString();
     }
 
     public static void main(String[] args) {
