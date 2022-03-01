@@ -7,6 +7,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 // 크롤링 시, 요청 시간을 조절하여 서비스 약관 위반을 막기 위한 싱글톤 인스턴스
 public class WikiFetcher {
@@ -48,5 +50,24 @@ public class WikiFetcher {
             }
         }
         lastRequestTime = System.currentTimeMillis();
+    }
+
+    // Method for Test Code(added ch15)
+    public Elements readWikipedia(String url) throws IOException {
+        URL realURL = new URL(url);
+
+        // assemble the file name
+        String filename = realURL.getHost() + realURL.getPath();
+
+        System.out.println(">> filename :" + filename);
+
+        // read the file
+        InputStream stream = WikiFetcher.class.getClassLoader().getResourceAsStream(filename);
+        Document doc = Jsoup.parse(stream, "UTF-8", filename);
+
+        // parse the contents of the file
+        Element content = doc.getElementById("mw-content-text");
+        Elements paras = content.select("p");
+        return paras;
     }
 }
