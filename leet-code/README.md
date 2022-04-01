@@ -8,4 +8,8 @@
         * 해당 레벨 패키지 내에 md 파일 생성
         * 쉬운 문제의 경우, 테스트 코드없이 클래스 구성
 * Java 8 기준
-* https://www.teamblind.com/post/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU 에서 제공하는 추천 문제부터 풀이 시작
+* 문제 풀이 순서
+  * https://leetcode.com/study-plan/ 커리큘럼
+    * https://leetcode.com/study-plan/algorithm/ 커리큘럼
+    * https://leetcode.com/study-plan/programming-skills/ 커리큘럼
+  * https://www.teamblind.com/post/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU 에서 제공하는 추천 문제
