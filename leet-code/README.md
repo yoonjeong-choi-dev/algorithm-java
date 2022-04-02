@@ -12,4 +12,5 @@
   * https://leetcode.com/study-plan/ 커리큘럼
     * https://leetcode.com/study-plan/algorithm/ 커리큘럼
     * https://leetcode.com/study-plan/programming-skills/ 커리큘럼
+    * https://leetcode.com/study-plan/data-structure/ 커리큘럼
   * https://www.teamblind.com/post/New-Year-Gift---Curated-List-of-Top-75-LeetCode-Questions-to-Save-Your-Time-OaM1orEU 에서 제공하는 추천 문제
