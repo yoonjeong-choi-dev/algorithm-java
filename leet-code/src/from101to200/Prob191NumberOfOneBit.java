@@ -11,4 +11,17 @@ public class Prob191NumberOfOneBit {
 
         return numOne;
     }
+
+    private int improvedSolution(int n) {
+        // 가장 오른쪽 비트 중 1인 비트 개수 세기
+        // n = ***100...0 일때, n-1 = ***011...1
+        // => n & (n-1) = ***000000
+        // 이후 *** 들에 대해서도 동일하게 연산
+        int count = 0;
+        while(n != 0) {
+            count++;
+            n = n & (n-1);
+        }
+        return count;
+    }
 }
