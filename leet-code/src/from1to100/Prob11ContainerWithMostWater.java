@@ -3,7 +3,8 @@ package from1to100;
 // https://leetcode.com/problems/container-with-most-water/
 public class Prob11ContainerWithMostWater {
     public int maxArea(int[] height) {
-        return myLinearSolution(height);
+        //return myLinearSolution(height);
+        return secondSolution(height);
     }
 
     // Runtime: 5 ms, faster than 44.04% of Java online submissions
@@ -48,5 +49,27 @@ public class Prob11ContainerWithMostWater {
         }
 
         return max;
+    }
+
+    private int secondSolution(int[] height) {
+        int ans = 0;
+        int left = 0, right = height.length - 1;
+        int leftH, rightH;
+        while (left < right) {
+            leftH = height[left];
+            rightH = height[right];
+
+            // 현재 범위에 대한 넓이를 이용하여 최대값 계산
+            ans = Math.max(ans, Math.min(leftH, rightH) * (right - left));
+
+            // 현재 양쪽 길이에서 작은 위치를 이동하면서 최대값 계산
+            if (leftH < rightH) {
+                while (left < right && height[left] <= leftH) left++;
+            } else {
+                while (left < right && height[right] <= rightH) right--;
+            }
+        }
+
+        return ans;
     }
 }
