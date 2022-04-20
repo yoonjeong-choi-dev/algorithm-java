@@ -36,4 +36,33 @@ public class Prob78Subsets {
 
         return ans;
     }
+
+    private int len;
+    List<List<Integer>> ans;
+    int[] nums;
+    private List<List<Integer>> recursiveSolution(int[] nums) {
+        this.nums = nums;
+        len = nums.length;
+        ans = new ArrayList<>((int) Math.pow(2, len));
+
+        boolean[] isContained = new boolean[len];
+        recurse(0, isContained);
+        return ans;
+    }
+
+    private void recurse(int curIdx, boolean[] isContained) {
+        if(curIdx == len) {
+            List<Integer> curAns = new LinkedList<>();
+            for(int i=0;i<len;i++){
+                if(isContained[i]) curAns.add(nums[i]);
+            }
+            ans.add(curAns);
+            return;
+        }
+
+        isContained[curIdx] = true;
+        recurse(curIdx+1, isContained);
+        isContained[curIdx] = false;
+        recurse(curIdx+1, isContained);
+    }
 }
