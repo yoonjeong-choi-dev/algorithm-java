@@ -15,13 +15,109 @@ public class Prob707DesignLinkedList {
         }
     }
 
+    // Improve
     class MyLinkedList {
+
+        private ListNode head;
+        private ListNode tail;
+        int size;
+
+        public MyLinkedList() {
+            head = new ListNode(-1);
+            tail = new ListNode(-1);
+
+            head.next = tail;
+            tail.prev = head;
+        }
+
+        public int get(int index) {
+            return getNode(index).val;
+        }
+
+        private ListNode getNode(int index) {
+            if (index * 2 < size) {
+                return getFromHead(index);
+            } else {
+                return getFromTail(size - index);
+            }
+        }
+
+        private ListNode getFromHead(int index) {
+            ListNode cur = head.next;
+            for (int i = 0; i < index; i++) cur = cur.next;
+            return cur;
+        }
+
+        private ListNode getFromTail(int index) {
+            ListNode cur = tail;
+            for (int i = 0; i < index; i++) cur = cur.prev;
+            return cur;
+        }
+
+        public void addAtHead(int val) {
+            ListNode node = new ListNode(val);
+
+            head.next.prev = node;
+            node.next = head.next;
+
+            node.prev = head;
+            head.next = node;
+
+            size++;
+        }
+
+        public void addAtTail(int val) {
+            ListNode node = new ListNode(val);
+
+            tail.prev.next = node;
+            node.prev = tail.prev;
+
+            node.next = tail;
+            tail.prev = node;
+
+            size++;
+        }
+
+        public void addAtIndex(int index, int val) {
+            if(index > size) return;
+
+            ListNode node = new ListNode(val);
+
+            ListNode next = getNode(index);
+            ListNode prev = next.prev;
+
+            prev.next = node;
+            node.prev = prev;
+
+            node.next = next;
+            next.prev = node;
+
+            size++;
+        }
+
+        public void deleteAtIndex(int index) {
+            if(index >= size) return;
+
+            ListNode toDelete = getNode(index);
+
+            ListNode prev = toDelete.prev;
+            ListNode next = toDelete.next;
+
+            prev.next = next;
+            next.prev = prev;
+
+            size--;
+        }
+    }
+
+
+    class MyLinkedList1 {
 
         private ListNode head;
         private ListNode tail;
         private int size;
 
-        public MyLinkedList() {
+        public MyLinkedList1() {
             head = null;
             tail = null;
             size = 0;
