@@ -53,4 +53,39 @@ public class Prob187RepeatedDNASequence {
         }
         return ans;
     }
+
+    private List<String> solutionUsingSet(String s) {
+        int len = s.length();
+        if (len < 10) return new ArrayList<>();
+
+        Set<String> ans = new HashSet<>();
+
+        // 해시키는 문자열을 4진수로 만들어서 저장
+        Set<Integer> hasSeen = new HashSet<>();
+
+        int[] charToInt = new int[len];
+        for (int i = 0; i < len; i++) {
+            charToInt[i] = nucleotides.get(s.charAt(i));
+        }
+
+        int curKey = 0;
+        int totalSize = 1;
+        for (int i = 0; i < 10; i++) {
+            curKey = curKey * 4 + charToInt[i];
+            totalSize *= 4;
+        }
+
+        hasSeen.add(curKey);
+        for (int i = 10; i < len; i++) {
+            // 이전 문자열의 첫 문자에 해당하는 숫자를 빼고 현재 문자를 더해서 키 만들기
+            curKey = curKey * 4 - charToInt[i - 10] * totalSize + charToInt[i];
+            if (hasSeen.contains(curKey)) {
+                ans.add(s.substring(i - 9, i + 1));
+            }
+            hasSeen.add(curKey);
+        }
+
+
+        return new ArrayList<>(ans);
+    }
 }
