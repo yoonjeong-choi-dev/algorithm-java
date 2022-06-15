@@ -8,8 +8,6 @@ import java.util.Map;
 // https://leetcode.com/problems/longest-string-chain/
 public class Prob1048LongestStringChain {
     public int longestStrChain(String[] words) {
-        int wordNum = words.length;
-
         // 문자열 길이로 정렬
         Arrays.sort(words, new Comparator<String>() {
             @Override
