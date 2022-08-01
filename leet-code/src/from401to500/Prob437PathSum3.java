@@ -25,7 +25,7 @@ public class Prob437PathSum3 {
     }
 
     private int ans, target;
-    private Map<Integer, Integer> distanceFromRoot;
+    private Map<Long, Integer> distanceFromRoot;
 
     public int pathSum(TreeNode root, int targetSum) {
         ans = 0;
@@ -37,7 +37,7 @@ public class Prob437PathSum3 {
         return ans;
     }
 
-    private void preOrder(TreeNode node, int curSum) {
+    private void preOrder(TreeNode node, long curSum) {
         if (node == null) return;
 
         curSum += node.val;
